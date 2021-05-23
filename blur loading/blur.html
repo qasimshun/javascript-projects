@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>blur loading</title>
+    <style>
+        div {
+            width: 100vw;
+            height: 100vw;
+            background-image: url(gg.jpg);
+            background-position: center;
+            background-size: cover;
+            background-origin: border-box;
+            background-repeat: no-repeat;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+        span {
+            color: black;
+            font-size: 3rem;
+            position: fixed;
+            bottom: 0;
+            z-index: 100;
+            background: pink;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        
+    </div>
+    <span>33%</span>
+    <script>
+
+        const img = document.querySelector('div');
+        let span = document.querySelector('span');
+
+        let load = 0;
+
+        let int = setInterval(blurring, 100);
+
+        function blurring(){
+            load++
+
+            if(load>99){
+                clearInterval(int)
+            }
+
+            span.innerText = `${load}%`;
+            span.style.opacity = scale(load,0,100,1,0);
+            img.style.filter = `blur(${scale(load,0,100,20,0)}px)`
+        }
+
+        function scale (number, inMin, inMax, outMin, outMax) {
+    return (number - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
+}
+
+    </script>
+</body>
+</html>
