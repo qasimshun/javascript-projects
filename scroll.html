@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>scroll animation</title>
+    <style>
+        body {
+            display: grid;
+            place-items: center;
+            grid-gap: 20px;
+        }
+        div {
+            width: 250px;
+            height: 150px;
+            display: grid;
+            place-items: center;
+            background: blue;
+            color: white;
+            font-size: 1.65rem;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            border-radius: 3px;
+            box-shadow: 0 0 3px black;
+            transition: all ease 350ms;
+        }
+
+        .six, .eight, .ten, .twelwe {
+            transform: translateX(200%);
+        }
+
+        .five, .seven, .nine, .eleven {
+            transform: translateX(-200%);
+        }
+
+        .cover {
+            transform: translateX(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="one gg">one</div>
+    <div class="two gg">two</div>
+    <div class="three gg">three</div>
+    <div class="four gg">four</div>
+    <div class="five gg">five</div>
+    <div class="six gg">six</div>
+    <div class="seven gg">seven</div>
+    <div class="eight gg">eigth</div>
+    <div class="nine gg">nine</div>
+    <div class="ten gg">ten</div>
+    <div class="eleven gg">eleven</div>
+    <div class="twelwe gg">twelwe</div>
+
+    <script>
+        const divs = document.querySelectorAll('.gg');
+        let word = window.innerHeight/5*4;
+
+        function stupid(){
+            divs.forEach( item => {
+                var another = item.getBoundingClientRect().top;
+                if (another < word){
+                    item.classList.add('cover');
+                }
+                else {
+                    item.classList.remove('cover');
+                }
+             } )
+        }
+
+
+        window.addEventListener('scroll', stupid);
+    </script>
+</body>
+</html>
