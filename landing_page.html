@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>split landing page</title>
+    <style>
+
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .flex {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .big-box {
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .left-side {
+            width: 50%;
+            height: 100%;
+            background: rgb(11, 73, 97);
+            flex-direction: column;
+        }
+
+        .left-side h1, .right-side h1 {
+            font-size: 6vw;
+            color: white;
+            
+        }
+
+        .left-side button, .right-side button {
+            border: none;
+            padding: .8em 2.5em;
+            font-size: 1.15rem;
+            background: purple;
+            box-shadow: 0 0 3px white;
+            color: white;
+            border-radius: 5px;
+        }
+
+        .right-side {
+            width: 50%;
+            height: 100%;
+            background: black;
+            flex-direction: column;
+        }
+        div.clash {
+            width: 75%;
+        }
+        div.crush{
+            width: 25%;
+        }
+    </style>
+</head>
+<body>
+    <div class="big-box flex">
+        <div class="left-side flex">
+            <h1>PlayStation 5</h1>
+            <button>BUY NOW</button>
+        </div>
+        <div class="right-side flex">
+            <h1>
+                XBox Series X
+            </h1>
+            <button>
+                BUY NOW
+            </button>
+        </div>
+    </div>
+    <script>
+        var something = document.querySelector('.left-side');
+        var another = document.querySelector('.right-side');
+
+        something.addEventListener('mouseenter', (e)=>{
+            e.target.classList.add('clash');
+            e.target.nextElementSibling.classList.add('crush');
+        });
+        something.addEventListener('mouseleave',e=>{
+            e.target.classList.remove('clash');
+            e.target.nextElementSibling.classList.remove('crush');
+        });
+
+        another.addEventListener('mouseenter', (e)=>{
+            e.target.classList.add('clash');
+            e.target.previousElementSibling.classList.add('crush');
+        });
+        another.addEventListener('mouseleave',e=>{
+            e.target.classList.remove('clash');
+            e.target.previousElementSibling.classList.remove('crush');
+        });
+    </script>
+</body>
+</html>
