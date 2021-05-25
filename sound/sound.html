@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sounds</title>
+    <style>
+        div button {
+            padding: 1em 2.5em;
+            margin: 1rem;
+            border: none;
+            background: blue;
+            color: white;
+            font-size: 1.15rem;
+            transition: all ease 200ms;
+            border-radius: 5px;
+        }
+
+        div button:hover {
+            color: yellow;
+            transform: scale(1.2);
+            box-shadow: 0 0 3px grey;
+        }
+    </style>
+</head>
+<body>
+    <audio src="mixkit-ominous-drums-227.wav" id="bas"></audio>
+    <audio src="mixkit-ominous-drums-appear-228.wav" id="boo"></audio>
+    <audio src="mixkit-metal-hit-drum-sound-550.wav" id="mew"></audio>
+    <audio src="mixkit-horror-tunnel-drum-554.wav" id="woof"></audio>
+    <audio src="mixkit-drum-hit-with-eco-544.wav" id="hush"></audio>
+    <div id="button"></div>
+    <script>
+        const randomSounds = ['bas','boo','mew', 'woof', 'hush'];
+        randomSounds.forEach(sound=>{
+            const btn = document.createElement('button');
+            btn.classList.add('btn');
+            function played(){
+                stopPlaying();
+                const something = document.getElementById(sound).play();
+            }
+
+            btn.addEventListener('click', played);
+
+            btn.innerText = sound;
+            document.getElementById('button').appendChild(btn);
+        });
+
+        function stopPlaying(){
+            randomSounds.forEach(sound=>{
+                const gg = document.getElementById(sound);
+                gg.pause();
+            gg.currentTime = 0;
+            });
+        }
+
+    </script>
+</body>
+</html>
