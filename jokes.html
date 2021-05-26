@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jokes</title>
+    <style>
+
+        body {
+            display: grid;
+            place-items: center;
+            height: 100vh;
+            color: white;
+        }
+        .box {
+            min-width: 450px;
+            width: 50vw;
+            max-width: 650px;
+            box-shadow: 0 0 10px grey;
+            border-radius: 10px;
+            display: grid;
+            place-items: center;
+            min-height: 250px;
+            padding: 1em;
+            background: linear-gradient(to right, black, skyblue);
+        }
+
+        .gg {
+            background: white;
+            color: black;
+            padding: 1em;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: .4em 1.2em;
+            border-radius: 5px;
+            border: none;
+            background: black;
+            color: white;
+            font-size: 1.15rem;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>dont laugh challenge</h1>
+        <div class="gg"></div>
+        <button>click for next joke</button>
+    </div>
+
+    <script>
+        const btn = document.querySelector('button');
+        const div = document.querySelector('.gg');
+
+
+        btn.addEventListener('click', something);
+
+        something();
+
+       async function something(){
+            const config = {
+                headers: {
+                   Accept:'application/json',
+                },
+            }
+          const res = await fetch('https://icanhazdadjoke.com',config);
+          const data = await res.json();
+          div.innerHTML = data.joke;
+        }
+    </script>
+</body>
+</html>
