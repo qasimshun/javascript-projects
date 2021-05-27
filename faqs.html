@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>faqs html</title>
+    <style>
+
+        .question {
+            padding: 1em;
+            border-radius: 10px;
+            box-shadow: 0 0 5px; 
+            margin: 10px;
+        }
+
+        .hidden {
+            display: none;
+            transition: all 250ms ease-in;
+        }
+
+        .ok {
+            display: block;
+        }
+
+        button {
+            padding: .5em 1.5em;
+            border-radius: 5px;
+            border: none;
+            background: blue;
+            color: white;
+            font-size: 1.15rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="question">
+        <h1 class="shown">this is the question</h1>
+        <p class="hidden one">this is the answer</p>
+        <button class="btn">open</button>
+    </div>
+    <div class="question">
+        <h1 class="shown">how is the time</h1>
+        <p class="hidden two">it is going great </p>
+        <button class="btn">open</button>
+    </div>
+    <div class="question">
+        <h1 class="shown">your communication skills what about them</h1>
+        <p class="hidden three">they have improved a lot ever since last time</p>
+        <button class="btn">open</button>
+    </div>
+    <div class="question">
+        <h1 class="shown">how is your life now</h1>
+        <p class="hidden four">life is good</p>
+        <button class="tbn">open</button>
+    </div>
+    <script>
+        const btn = document.querySelectorAll('.btn');
+        const paragrph = document.querySelectorAll('.hidden');
+
+        btn.forEach(item =>{
+            item.addEventListener('click',()=>{
+                
+                item.previousElementSibling.classList.toggle('ok');
+                if(item.previousElementSibling.classList.contains('ok')){
+                    item.innerHTML = 'close';
+                }
+                else {
+                    item.innerHTML = 'open';
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>
