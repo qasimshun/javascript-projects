@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>random choice picker</title>
+    <style>
+        body {
+            background: lightblue;
+        }
+        .container h1 {
+            background: lightcoral;
+            padding: 1em;
+        }
+
+        textarea {
+            min-width: 100vw;
+        }
+
+        .span {
+            margin-top: 2em;
+        }
+
+
+        div span {
+            background: lightpink; 
+            border-radius: 10px;
+            padding: 1em;
+            margin: 1em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>please enter your choices sperated by commas <br> press when you are done</h1>
+        <textarea name="textarea" id="text" cols="90" rows="10"></textarea>
+    </div>
+    <div class="span">
+        <span>choice 1</span>
+        <span>choice 2</span>
+        <span>choice 3</span>
+    </div>
+    <script>
+        const textarea = document.querySelector('#text');
+        const span = document.querySelector('.span')
+        textarea.focus();
+
+        textarea.addEventListener('keyup', e => {
+            something(e.target.value)
+        });
+
+        function something(e){
+            const tags = e.split(',').filter(tag =>tag.trim() !=='').map(tag =>tag.trim());
+
+            span.innerHTML = '';
+            tags.forEach(element => {
+                const another = document.createElement('span');
+                another.classList.add('gg');
+                another.innerText = element;
+                span.appendChild(another);
+            });
+        }
+    </script>
+</body>
+</html>
