@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>some practice</title>
+    <style>
+        .top {
+            width: 100%;
+            position: relative;
+            background: royalblue;
+        }
+        .top button {
+            border-radius: 5px;
+            margin: 15px;
+            padding: 10px 20px;
+            font-size: 100%;
+            border: none;
+        }
+
+        .section {
+            background: burlywood;
+            box-shadow: 0 0 10px;
+            padding: 20px;
+            width: 40%;
+            margin: 40px auto;
+            font-size: 1.25rem;
+        }
+
+        form {
+            display: grid;
+            place-items: center;
+            width: 800px;
+            box-shadow: 0 0 10px;
+        }
+
+        .form-control label {
+            margin: 10px;
+        }
+
+        .form-control {
+            margin: 10px;
+            max-width: 800px;
+            display: grid;
+            place-items: center;
+        }
+
+        .form-control input {
+            width: 500px;
+            padding: 8px;
+            font-size: 1.25rem;
+        }
+
+        .modal {
+            display: none;
+            margin: 0 auto;
+        }
+
+        .visible {
+            display: block;
+        }
+
+        .not {
+            display: none;
+        }
+
+        #add {
+            background: blue;
+            border: none;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 5px;
+        }
+
+        #cancel {
+            padding: 10px 25px;
+            border-radius: 5px;
+            border:1px solid black;
+        }
+
+        .form-control:last-child {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .form-control:last-child button {
+            margin: 10px;
+            font-size: 100%;
+        }
+
+        ul {
+            list-style-type: none;
+            font-size: 1.15rem;
+            padding: 0;
+            margin: 10px;
+            width: 400px;
+            box-shadow: 0 0 10px;
+            border-radius: 10px;
+        }
+
+        .faker {
+            padding: 5px;
+            padding: 10px;
+            margin: 10px;
+            list-style-type: none;
+            width: 400px;
+            box-shadow: 0 0 10px;
+            border-radius: 10px;
+        }
+
+        .floated {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .floated div img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .floated div:first-child {
+            width: 30%;
+            margin: 5px;
+        }
+
+        .floated div:last-child {
+            width: 70%;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="top">
+        <button class="close">close</button>
+        <button class="open">open</button>
+    </div>
+    <div class="section">
+        some movies will appear here
+    </div>
+    <section class="gg"></section>
+
+    <div class="modal">
+            <div class="form-control">
+                <label for="him">movie name</label>
+            <input type="text" id="him">
+            </div>
+            <div class="form-control">
+                <label for="picture">picture</label>
+                <input type="text" id="picture">
+            </div>
+            <div class="form-control">
+                <label for="number">number</label>
+                <input type="number" id="number">
+            </div>
+            <div class="form-control">
+                <button id="cancel">cancel</button>
+                <button id="add">add</button>
+            </div>
+    </div>
+    <script>
+        const openbtn = document.querySelector('.open');
+        const closebtn = document.querySelector('.close');
+        const Modal = document.querySelector('.modal');
+        const inp1 = document.querySelector('#him');
+        const inp2 = document.querySelector('#picture');
+        const inp3 = document.querySelector('#number');
+        const formbtnadd = document.querySelector('#add');
+        const formBtnCancel = document.querySelector('#cancel');
+        const section = document.querySelector('.section');
+        const humongous = document.querySelectorAll('input');
+        const topping = document.querySelector('.top');
+        const gg = document.querySelector('.gg');
+        console.log(humongous)
+        const movies = [];
+
+        const clearInput = () => {
+            for(const why of humongous){
+                why.value = '';
+            }
+        }
+
+        const showModal = () => {
+            Modal.classList.toggle('visible');
+            clearInput();
+        }
+
+        const closeModal = () => {
+            Modal.classList.remove('visible');
+        }
+
+        const wording = () => {
+            section.classList.add('not');
+            console.log('gg')
+        }
+
+        const anotherCool = (titling,image,numbering) => {
+            const her = document.createElement('li');
+            her.className = 'faker';
+            her.innerHTML = `<div class='floated'><div><img src='${inp1.value}'></div> <div><h1>${inp2.value}</h1> <p>${inp3.value}</p> <button id='delete'>delete</button></div></div>`;
+            gg.append(her);
+        }
+
+        const disappear = () => {
+            Modal.classList.remove('visible');
+        }
+
+        const lengthy = () => {
+            if(movies.length===0){
+                topping.classList.add('not');
+            }else {
+                topping.classList.remove('not');
+            }
+        }
+
+        const main = () => {
+            if(inp1.value.trim() == '' || inp2.value.trim() == '' || inp3.value.trim() == '' || inp3.value >5 || inp3.value<1){
+                alert('something is not right here is a psychopah in he house.');
+                return;
+            }
+            const newMovie = {
+                title: inp1.value,
+                picture: inp2.value,
+                number: inp3.value
+            };
+
+            movies.push(newMovie);
+            console.log(movies);
+            wording();
+            disappear();
+            anotherCool();
+            clearInput();
+            lengthy();
+            cutItOff();
+        };
+
+        const cutItOff = (e) => {
+            const cutting = document.querySelector('#delete');
+            if(cutting){
+                cutting.addEventListener('click',e=>{
+                    e.target.parentElement.parentElement.parentElement.remove();
+                });
+            }
+        }
+
+        
+
+        openbtn.addEventListener('click', showModal);
+        closebtn.addEventListener('click', closeModal);
+        formbtnadd.addEventListener('click', main);
+        formBtnCancel.addEventListener('click', clearInput);
+    </script>
+</body>
+</html>
