@@ -1,0 +1,36 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+button {
+    padding: 10px 30px;
+    font-size: 100%;
+    border: none;
+    background: blue;
+    border-radius: 5px;
+    color: white;
+    margin: 5px;
+}
+
+.box div {
+    width: 100px;
+    background: red;
+    height: 10px;
+    margin-bottom: 30px;
+}
+
+video {
+    max-width: 100%;
+    object-fit: cover;
+    display: block;
+    height: auto;
+}
+
+.progress span {
+    width: 20px;
+    height: 30px;
+    background: blue;
+    display: inline-block;
+}
