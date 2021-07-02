@@ -1,0 +1,52 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    position: absolute;
+    top: 10%;
+}
+
+.left {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 50%;
+    border-right: 2px solid black;
+}
+
+.left > * {
+    margin: 10px;
+}
+
+.right {
+    width: 50%;
+    height: 300px;
+    margin-left: 10px;
+}
+
+button {
+    padding: .5em 1.5em;
+    font-size: 1rem;
+}
+
+h2 {
+    border-bottom: 2px solid black;
+    padding-bottom: 15px;
+}
+
+h2 strong, .gg {
+    float: right;
+    margin-right: 10px;
+}
