@@ -1,0 +1,75 @@
+.app {
+    height: 100vh;
+    margin: 0 auto;
+    width: 50%;
+}
+
+.calculation {
+    background: white;
+    box-shadow: 0 0 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1rem;
+}
+
+.income > p {
+    color: green;
+}
+
+.expense > p {
+    color: red;
+}
+
+
+.history > h3 {
+    border-bottom: 2px solid;
+}
+
+.history li {
+    background: white;
+    box-shadow: 0 0 5px;
+    padding: .5rem;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 5px;
+}
+
+.transaction > h3 {
+    border-bottom: 2px solid;
+}
+
+.form-control {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+span {
+    float: right;
+}
+
+.form-control > input {
+    width: 100%;
+    font-size: 1.15rem;
+    margin-top: 5px;
+}
+
+button {
+    width: 100%;
+    background: chartreuse;
+    padding: .5rem;
+    border: none;
+    margin-top: 10px;
+}
+
+.plus {
+    border-right: 5px solid green;
+}
+
+.minus {
+    border-right: 5px solid red;
+}
