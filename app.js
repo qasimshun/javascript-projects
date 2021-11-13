@@ -1,44 +1,66 @@
-const leftBtn = document.querySelector('.left');
-const pauseBtn = document.querySelector('.pause');
-const rightBtn = document.querySelector('.right');
-const title = document.querySelector('.title');
-const audio = document.querySelector('.audio');
-const image = document.querySelector('.img')
-let isPlaying = false;
-let counter = 0;
-let nameOfTheSong = ['anewbeginning','creativeminds','ukulele'];
-loadSong(nameOfTheSong[counter]);
-pauseBtn.addEventListener('click', () => {
-    if(isPlaying){
-        audio.pause();
-        isPlaying = false;
-    }else {
-        audio.play();
-        isPlaying = true;
-    }
-});
+const input = document.querySelector('input');
+const contentContainer = document.querySelector('.container');
+const circles = document.querySelectorAll('.circles');
 
-leftBtn.addEventListener('click', ()=>{
-    
-    counter--;
-    loadSong(nameOfTheSong[counter])
-    if(counter<0){
-        counter=2;
-    }
-    audio.play()
-});
+let limit = 5;
+let page = 1;
 
-rightBtn.addEventListener('click', ()=>{
-    
-    counter++;
-    loadSong(nameOfTheSong[counter])
-    if(counter>nameOfTheSong.length-1){
-        counter=0;
-    }
-    audio.play()
-})
-
-function loadSong(song){
-    audio.src = `bensound-${song}.mp3`;
-    image.src = `${song}.jpg`;
+async function getPost() {
+    const res = await fetch(`https://jsonplaceholder.typicode.com/posts?_limit=${limit}&_page=${page}`);
+    const data = await res.json();
+    return data;
 }
+
+async function showPost() {
+    const posts = await getPost();
+
+    posts.forEach(element => {
+        const div = document.createElement('div');
+        div.className = 'gg';
+        div.innerHTML = `
+        <span>${element.id}</span>
+        <h2 class='heading'>${element.title}</h2>
+        <p class='post'>${element.body}</p>
+        `
+        contentContainer.appendChild(div);
+    });
+}
+
+function showLoader() {
+    circles.forEach(ele => {
+        ele.classList.add('show');
+        setTimeout(()=>{
+            ele.classList.remove('show');
+            setTimeout(()=>{
+                page++;
+                showPost();
+            },300)
+        },1000)
+    })
+}
+
+function filterPosts(e) {
+    const inputValue = e.target.value.toUpperCase();
+    const posts = document.querySelectorAll('.gg');
+    posts.forEach(ele => {
+        const heading = document.querySelector('.post').innerHTML.toUpperCase();
+        const title = document.querySelector('.heading').innerHTML.toUpperCase();
+        if(heading.indexOf(inputValue)> -1|| title.indexOf(inputValue)>-1){
+            ele.style.display = 'block';
+            console.log('gg')
+        }else {
+            ele.style.display = 'none';
+        }
+    })
+}
+
+window.addEventListener('scroll', ()=> {
+    const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+    if(scrollTop + clientHeight >= scrollHeight-5){
+        showLoader();
+    }
+});
+
+input.addEventListener('input', filterPosts);
+
+showPost();
