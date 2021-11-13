@@ -2,44 +2,31 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rock Paper Scisors</title>
-    <style>
-        @import url(style.css);
-    </style>
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
 </head>
 <body>
-    <h1>
-        Rock Paper scisors
-    </h1>
-    <article>
-        <div class="score_box">
-            <div>
-                <span id="user">0</span><span>:</span><span id="comp">0</span>
+    <div class="app">
+        <div class="box">
+            <div class="container">
+                <h1 class="title"></h1>
+                <div class="progress">
+                    <div class="bar"></div>
+                </div>
             </div>
-            <div class="user">
-                <span>user</span>
+            <audio src="" class="audio"></audio>
+            <div class="image">
+                <img src="" alt="" class="img">
             </div>
-            <div class="comp">
-                <span>comp</span>
-            </div>
-        </div>
-        <h2 id="statement">Paper covers Rock. you win!</h2>
-        <div class="img">
-            <div id="rock"> 
-                <img src="paper.jpg" alt="">
-            </div>
-            <div id="paper">
-                <img src="rock.jpg" alt="">
-            </div>
-            <div id="scissors">
-                <img src="scisor.jpg" alt="">
+            <div class="buttons">
+                <button class="left">left</button>
+            <button class="pause">pause</button>
+            <button class="right">right</button>
             </div>
         </div>
-        <div>
-            <p>Make your move.</p>
-        </div>
-    </article>
+    </div>
     <script src="app.js"></script>
 </body>
 </html>
